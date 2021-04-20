@@ -1,0 +1,57 @@
+:root{
+		--cols: 5;
+		--vert-margin: 4px;
+		--oriz-margin: 10px;
+}
+
+html{
+		margin: 0;
+		padding: 0;
+}
+
+div{
+		display: block;
+		text-align: center;
+}
+
+input{
+		width: 50%;
+		text-align: center;
+		margin: 4px;
+}
+
+#dropzone{
+		width: 100vw;
+		height: 100vh;
+		background-color: transparent;
+		border: none;
+		margin: 0;
+		position: fixed;
+		top: 0;
+		left: 0;
+		z-index: -1;
+}
+
+#cont{
+		display: grid;
+		grid-template-columns: repeat(
+				var(--cols), 
+				calc(100% / var(--cols))
+		)
+}
+
+.container div{
+		padding: 
+		var(--vert-margin) 
+		var(--oriz-margin) 
+		var(--vert-margin) 
+		var(--oriz-margin);
+}
+
+img{
+		max-width: 100%;
+}
+
+p{
+		font-size: 0.6em;
+}
