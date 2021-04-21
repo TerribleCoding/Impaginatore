@@ -1,57 +1,61 @@
-:root{
-		--cols: 5;
-		--vert-margin: 4px;
-		--oriz-margin: 10px;
+html, body {
+	margin: 0;
+	padding: 0;
 }
 
-html{
-		margin: 0;
-		padding: 0;
+div {
+	display: block;
+	text-align: center;
 }
 
-div{
-		display: block;
-		text-align: center;
+input {
+	display: inline-block;
+	text-align: center;
+	margin: 8px 32px 8px 32px;
+	font-size: 0.8em;
 }
 
-input{
-		width: 50%;
-		text-align: center;
-		margin: 4px;
+input[type=text] {
+	width: 50%;
+	font-size: 1.5em;
 }
 
-#dropzone{
-		width: 100vw;
-		height: 100vh;
-		background-color: transparent;
-		border: none;
-		margin: 0;
-		position: fixed;
-		top: 0;
-		left: 0;
-		z-index: -1;
+input[type=number] {
+	width: 5em;
+	margin-left: 0;
 }
 
-#cont{
-		display: grid;
-		grid-template-columns: repeat(
-				var(--cols), 
-				calc(100% / var(--cols))
-		)
+span {
+	margin: 0 0 0 32px;
 }
 
-.container div{
-		padding: 
-		var(--vert-margin) 
-		var(--oriz-margin) 
-		var(--vert-margin) 
-		var(--oriz-margin);
+#dropzone {
+	width: 100vw;
+	height: 100vh;
+	background-color: transparent;
+	border: none;
+	margin: 0;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: -1;
 }
 
-img{
-		max-width: 100%;
+#cont {
+	display: grid;
+	--vert-margin: 4px;
+	--oriz-margin: 10px;
+	--gaps: calc(var(--cols) - 1);
+	--total-gap: calc(var(--oriz-margin) * var(--gaps));
+	grid-template-columns: repeat( var(--cols), calc(calc(100% - var(--total-gap)) / var(--cols)));
+	column-gap: var(--oriz-margin);
+	row-gap: var(--vert-margin);
 }
 
-p{
-		font-size: 0.6em;
+img {
+	max-width: 100%;
+}
+
+p {
+	font-size: 0.6em;
 }

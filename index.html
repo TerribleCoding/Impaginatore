@@ -1,22 +1,29 @@
 <!DOCTYPE html>
 <html lang="it">
-		
+
 <head>
-		<title></title>
-		<script src="https://cdn.jsdelivr.net/npm/p5@1.3.1/lib/p5.js"></script>
-		<script src="script.js"></script>
-		<link rel="stylesheet" href="style.css">
+	<title>PicPager</title>
+	<script src="https://cdn.jsdelivr.net/npm/p5@1.3.1/lib/p5.js"></script>
+	<script src="script.js" defer></script>
+	<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-		<div>
-				<input type="text" placeholder="Titolo">
-				<input type="file" accept="image/*" id="file" onchange="loadFiles(event)" multiple>
+	<div>
+		<input type="text" placeholder="Titolo" id="titolo">
+		<br>
+		<div class="commands">
+			<input type="file" accept="image/*" id="file" onchange="loadFiles(event)" multiple>
+			<span>Azzera:</span>
+			<button onclick="empty()">❌</button>
+			<span>Colonne:</span>
+			<input type="number" id="cols" onchange="updateCols()">
 		</div>
-		
-		<div id="dropzone"></div>
-		
-		<div id="cont"></div>
+	</div>
+
+	<div id="dropzone"></div>
+
+	<div id="cont"></div>
 </body>
 
 </html>
