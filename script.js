@@ -1,36 +1,35 @@
-var dropzone;
-var grid;
-var number;
-var title;
+var dropzone = document.getElementById('dropzone');
+dropzone.setAttribute('ondrop', 'loadFiles()');
 
-function setup() {
-	noCanvas();
-	dropzone = select('#dropzone');
-	dropzone.drop(loadFiles);
-	title = select('#titolo')
-	grid = select('#cont');
-	number = select('#cols');
-	number.changed(updateCols);
-	number.elt.value = 5;
-	updateCols();
-}
+var grid = document.getElementById('cont');
 
-function loadFiles(event) {
-	for (let file of event.target.files) {
-		var cont = createDiv();
-		cont.parent(document.getElementById('cont'));
-		var image = createImg(URL.createObjectURL(file), '');
-		image.parent(cont);
-		var p = createP(file.name);
-		p.parent(cont);
+var number = document.getElementById('cols');
+number.onchange(updateCols());
+number.value(5);
+
+var title = document.getElementById('titolo');
+
+updateCols();
+
+
+loadFiles function(event) {
+	event.target.files.forEach (file => {
+		var cont = document.createElement("div");;
+		grid.appendChild(cont);
+		var image = document.createElement("img");
+		image.src = URL.createObjectURL(file);
+		cont.appendChild(image);
+		var p = document.createElement("p");
+		p.innerText = file.name;
+		cont.appendChild(p);
 	}
 }
 
-function updateCols() {
-	grid.attribute('style', '--cols: ' + number.elt.value + ';');
+updateCols function() {
+	grid.setAttribute('style', '--cols: ' + number.elt.value + ';');
 }
 
-function empty() {
-	grid.elt.innerHTML = '';
-	title.elt.value = '';
+empty function() {
+	grid.innerHTML = '';
+	title.value = '';
 }
