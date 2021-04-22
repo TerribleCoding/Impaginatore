@@ -5,31 +5,30 @@ var grid = document.getElementById('cont');
 
 var number = document.getElementById('cols');
 number.onchange(updateCols());
-number.value(5);
+number.value = 5;
 
 var title = document.getElementById('titolo');
 
 updateCols();
 
-
-loadFiles function(event) {
-	event.target.files.forEach (file => {
-		var cont = document.createElement("div");;
+function loadFiles(event) {
+	var files = event.target.files;
+	for (let i = 0; i < files.length; i++) {
+		var cont = document.createElement("div");
 		grid.appendChild(cont);
 		var image = document.createElement("img");
-		image.src = URL.createObjectURL(file);
-		cont.appendChild(image);
+		image.src = URL.createObjectURL(files[i]);
 		var p = document.createElement("p");
-		p.innerText = file.name;
-		cont.appendChild(p);
+		p.innerText = files[i].name;
+		cont.append(image, p);
 	}
 }
 
-updateCols function() {
-	grid.setAttribute('style', '--cols: ' + number.elt.value + ';');
+function updateCols() {
+	grid.setAttribute('style', '--cols: ' + number.value + ';');
 }
 
-empty function() {
+function empty() {
 	grid.innerHTML = '';
 	title.value = '';
 }
