@@ -1,36 +1,34 @@
-var dropzone;
-var grid;
-var number;
-var title;
+var dropzone = document.getElementById('dropzone');
+dropzone.setAttribute('ondrop', 'loadFiles()');
 
-function setup() {
-	noCanvas();
-	dropzone = select('#dropzone');
-	dropzone.drop(loadFiles);
-	title = select('#titolo')
-	grid = select('#cont');
-	number = select('#cols');
-	number.changed(updateCols);
-	number.elt.value = 5;
-	updateCols();
-}
+var grid = document.getElementById('cont');
+
+var number = document.getElementById('cols');
+number.onchange(updateCols());
+number.value = 5;
+
+var title = document.getElementById('titolo');
+
+updateCols();
 
 function loadFiles(event) {
-	for (let file of event.target.files) {
-		var cont = createDiv();
-		cont.parent(document.getElementById('cont'));
-		var image = createImg(URL.createObjectURL(file), '');
-		image.parent(cont);
-		var p = createP(file.name);
-		p.parent(cont);
+	var files = event.target.files;
+	for (let i = 0; i < files.length; i++) {
+		var cont = document.createElement("div");
+		grid.appendChild(cont);
+		var image = document.createElement("img");
+		image.src = URL.createObjectURL(files[i]);
+		var p = document.createElement("p");
+		p.innerText = files[i].name;
+		cont.append(image, p);
 	}
 }
 
 function updateCols() {
-	grid.attribute('style', '--cols: ' + number.elt.value + ';');
+	grid.setAttribute('style', '--cols: ' + number.value + ';');
 }
 
 function empty() {
-	grid.elt.innerHTML = '';
-	title.elt.value = '';
+	grid.innerHTML = '';
+	title.value = '';
 }
