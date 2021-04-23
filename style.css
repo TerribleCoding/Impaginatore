@@ -25,6 +25,11 @@ input[type=number] {
 	margin-left: 0;
 }
 
+input[type=checkbox] {
+	width: 2em;
+	margin-left: 0;
+}
+
 span {
 	margin: 0 0 0 32px;
 }
@@ -50,6 +55,10 @@ span {
 	grid-template-columns: repeat( var(--cols), calc(calc(100% - var(--total-gap)) / var(--cols)));
 	column-gap: var(--oriz-margin);
 	row-gap: var(--vert-margin);
+}
+
+.squares {
+	aspect-ratio: 1 / 1;
 }
 
 img {

@@ -2,7 +2,7 @@
 <html lang="it">
 
 <head>
-	<title>PicPager</title>
+	<title>PicPlacer</title>
 	<script src="script.js" defer></script>
 	<link rel="stylesheet" href="style.css">
 </head>
@@ -17,6 +17,8 @@
 			<button onclick="empty()">❌</button>
 			<span>Colonne:</span>
 			<input type="number" id="cols" onchange="updateCols()">
+			<span>Celle quadrate:</span>
+			<input type="checkbox" id="square" onchange="squarify()">
 		</div>
 	</div>
 
