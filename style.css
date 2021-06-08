@@ -59,3 +59,17 @@ img {
 p {
 	font-size: 0.6em;
 }
+
+@media print {
+	body {
+		page-break-inside: auto;	
+	}
+
+	#cont>div {
+		page-break-inside: avoid;
+	}
+
+	.commands {
+		display: none;
+	}
+}
