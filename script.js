@@ -8,6 +8,13 @@ number.onchange(updateCols());
 number.value = 5;
 
 var title = document.getElementById('titolo');
+title.addEventListener('keyup', () => {
+	if (title.value == '') {
+		title.classList.add('invisible');
+	} else {
+		title.classList.remove('invisible');
+	}
+});
 
 var squareCheck = document.getElementById('square');
 
