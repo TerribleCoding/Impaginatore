@@ -57,14 +57,42 @@ span {
 	row-gap: var(--vert-margin);
 }
 
+.img-container {
+	display: flex;
+	position: relative;
+}
+
 .squares {
 	aspect-ratio: 1 / 1;
 }
 
-img {
+.img-container>img {
+	margin: auto;
 	max-width: 100%;
+	position: relative;
+	transform: none;
+}
+
+.img-container.squares>img {
+	transform: rotate(var(--rot));
 }
 
 p {
 	font-size: 0.6em;
+}
+
+.rotate {
+	position: absolute;
+	top: 2px;
+	right: 2px;
+	opacity: 0;
+}
+
+#cont>div:hover .img-container.squares .rotate {
+	opacity: 1;
+}
+
+.rotate img {
+	width: 1em;
+	aspect-ratio: 1;
 }
