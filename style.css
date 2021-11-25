@@ -95,4 +95,17 @@ p {
 .rotate img {
 	width: 1em;
 	aspect-ratio: 1;
+
+@media print {
+	body {
+		page-break-inside: auto;	
+	}
+
+	#cont>div {
+		page-break-inside: avoid;
+	}
+
+	.commands, .rotate, .invisible {
+		display: none;
+	}
 }
