@@ -9,6 +9,8 @@ number.value = 5;
 
 var title = document.getElementById('titolo');
 
+var squareCheck = document.getElementById('square');
+
 updateCols();
 
 function loadFiles(event) {
@@ -16,11 +18,27 @@ function loadFiles(event) {
 	for (let i = 0; i < files.length; i++) {
 		var cont = document.createElement("div");
 		grid.appendChild(cont);
+		var imgCont = document.createElement('div');
+		imgCont.classList.add('img-container');
+		if (squareCheck.checked == false) { imgCont.classList.add('squares'); }
 		var image = document.createElement("img");
 		image.src = URL.createObjectURL(files[i]);
+		image.setAttribute('style', '--rot: 0deg;');
+		var rotate = document.createElement('button');
+		rotate.classList.add('rotate');
+		rotate.onclick = function(event) {
+			var img = event.target.parentNode.parentNode.querySelector('img');
+			var rotation = img.getAttribute('style').match(/(--rot: )(\d+)(deg;)/).splice(1);
+			rotation[1] = parseInt(rotation[1]) + 90;
+			img.setAttribute('style', rotation.join(''));
+		};
+		var icon = document.createElement('img');
+		icon.src = 'rotate-right.png';
+		rotate.append(icon);
+		imgCont.append(image, rotate);
 		var p = document.createElement("p");
 		p.innerText = files[i].name;
-		cont.append(image, p);
+		cont.append(imgCont, p);
 	}
 }
 
@@ -31,4 +49,11 @@ function updateCols() {
 function empty() {
 	grid.innerHTML = '';
 	title.value = '';
+}
+
+function squarify() {
+	var target = document.querySelectorAll('#cont .img-container');
+	for (let i = 0; i < target.length; i++) {
+		target[i].classList.toggle('squares');
+	}
 }
