@@ -95,6 +95,7 @@ p {
 .rotate img {
 	width: 1em;
 	aspect-ratio: 1;
+}
 
 @media print {
 	body {
